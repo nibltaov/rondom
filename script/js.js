@@ -19,6 +19,8 @@ btn.addEventListener('click', () => {
         peopleArray = peopleArray.filter(e => e != false);
         teamTwo = peopleArray;
         toDistribute(peopleArray);
+        document.querySelector('.com__one h2 span').innerHTML = '( ' + teamOne.length + ' )';
+        document.querySelector('.com__two h2 span').innerHTML = '( ' + teamTwo.length + ' )';
         create(teamOne, teamTwo);
     }
     setTimeout(function(){
