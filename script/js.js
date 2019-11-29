@@ -10,12 +10,15 @@ btn.addEventListener('click', () => {
     teamTwo = [];
     teamDivOne.innerHTML = '';
     teamDivTwo.innerHTML = '';
-    let peopleArray = people.value.split(' ');
+    let peopleArray = people.value.trim().split(' ');
+    peopleArray = peopleArray.filter(e => e != false);
     teamTwo = peopleArray;
     toDistribute(peopleArray);
     create(teamOne, teamTwo);
 })
-
+function FilterArray(value) {
+   return value == false
+}
 function toDistribute(peopleArray) {
     let halfPeople = peopleArray.length / 2;
     for (let i = 0; i < halfPeople; i++) {
@@ -28,37 +31,27 @@ function toDistribute(peopleArray) {
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
-let ww = '';
-people.addEventListener('keydown', function (e) {
-    let x = new RegExp("^.*[^A-zА-яЁё].*$");
-    if (x.test(e.key) || e.keyCode == 13) {
-        e.key != '  ' && trueOrfalse == true ? e.preventDefault() : ''; 
-    }
-})
-
-function create(teamOne, teamTwo, i = 0) {
-    let addOne = document.createElement("div"), 
-        addTwo = document.createElement("div"),  
-        addUserOne = document.createTextNode(teamOne[i]), 
-        addUserTwo = document.createTextNode(teamTwo[i]);
-    if(teamOne[i] != false || teamOne[i] != undefined) {
+function create(teamOne, teamTwo, i = 0) {            
+    if(teamOne[i] != false && teamOne[i] != undefined && teamOne[i] != ' ') {
+        let addOne = document.createElement("div"), addUserOne = document.createTextNode(teamOne[i]);
         addOne.appendChild(addUserOne);
         teamDivOne.appendChild(addOne);
     }
-    if(teamTwo[i] != false || teamTwo[i] != undefined) {
+    if(teamTwo[i] != false && teamTwo[i] != undefined && teamTwo[i] != ' ') {
+        if(teamTwo[i] != undefined) {let addTwo = document.createElement("div"), addUserTwo = document.createTextNode(teamTwo[i]);
         addTwo.appendChild(addUserTwo);
-        teamDivTwo.appendChild(addTwo);
+        teamDivTwo.appendChild(addTwo);}
     }
-    if(teamOne.length-1 > i) {
-        i++
+    if(teamOne.length -1 > i) {
         setTimeout(() => create(teamOne, teamTwo, i), 200);
+        i++;
     }
 }
 
-// people1 people2 people3 people4 people5 people6 people7 people8 people9 people10
+// people1 people2 people3 people4 people5 people6 people7 people8 people9 people10 
 
 
-function out(){
-    console.log(teamOne);
-    console.log(teamTwo);
-}
+// function out(){
+//     console.log(teamOne);
+//     console.log(teamTwo);
+// }
