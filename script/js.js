@@ -5,6 +5,9 @@ let btn = document.querySelector('.pople-random'),
     teamTwo = [],
     teamDivOne = document.querySelector('.com__one-list'),
     teamDivTwo = document.querySelector('.com__two-list');
+people.addEventListener('input', () => {
+    people.value.length > 0 ? btn.disabled = false : btn.disabled = true;
+})
 btn.addEventListener('click', () => {
     btn.disabled = true;
     teamOne = [];
@@ -12,10 +15,12 @@ btn.addEventListener('click', () => {
     teamDivOne.innerHTML = '';
     teamDivTwo.innerHTML = '';
     let peopleArray = people.value.trim().split(' ');
-    peopleArray = peopleArray.filter(e => e != false);
-    teamTwo = peopleArray;
-    toDistribute(peopleArray);
-    create(teamOne, teamTwo);
+    if(peopleArray.length > 1) {
+        peopleArray = peopleArray.filter(e => e != false);
+        teamTwo = peopleArray;
+        toDistribute(peopleArray);
+        create(teamOne, teamTwo);
+    }
     setTimeout(function(){
         btn.disabled = false;
     }, 3000);

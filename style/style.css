@@ -129,6 +129,7 @@ h2 {
     padding: 15px;
     transform: scale(1);
     animation: scale 0.8s both;
+    background: #fff;
 }
 .com__item > div:first-of-type {
     display: flex;
@@ -149,7 +150,7 @@ h2 {
         transform: scale(0);
     }
     50% {
-        transform: scale(1.1);
+        transform: scale(1.15);
     }
     100% {
         transform: scale(1);
