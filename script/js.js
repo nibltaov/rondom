@@ -6,6 +6,7 @@ let btn = document.querySelector('.pople-random'),
     teamDivOne = document.querySelector('.com__one-list'),
     teamDivTwo = document.querySelector('.com__two-list');
 btn.addEventListener('click', () => {
+    btn.disabled = true;
     teamOne = [];
     teamTwo = [];
     teamDivOne.innerHTML = '';
@@ -15,6 +16,9 @@ btn.addEventListener('click', () => {
     teamTwo = peopleArray;
     toDistribute(peopleArray);
     create(teamOne, teamTwo);
+    setTimeout(function(){
+        btn.disabled = false;
+    }, 3000);
 })
 function FilterArray(value) {
    return value == false

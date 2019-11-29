@@ -49,6 +49,11 @@ button {
     border-radius: 6px;
     margin-top: 20px;
     cursor: pointer;
+    transition: 0.5s;
+}
+button:disabled {
+    background: gray;
+    cursor: default;
 }
 
 .form span {
